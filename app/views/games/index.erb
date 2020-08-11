@@ -1,0 +1,18 @@
+<h1>List of all Games</h1>
+<ul>
+<% @games.each do |game|%>
+<li><a href="/games/<%= game.id %>"><%= game.id %></a></li>
+<% end %>
+<ul>
+     <nav>
+     <p><a href="/games/new">Create New Game</a></p>
+     </nav>
+     <nav>
+     <p><a href="/users/home">Your Dash-Board</a></p>
+     </nav>             
+     <nav>
+     <p><a href="/">Game Home Page</a></p>
+     </nav>
+     <nav>
+     <p><a href="/logout">Logout</a></p>
+     </nav>
