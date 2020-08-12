@@ -60,7 +60,7 @@ class GamesController < ApplicationController
     end
 
     delete '/games/:id' do
-        binding.pry
+        #binding.pry
         @game = Game.find_by(user_id: session[:user_id], id: params[:id])
         if @game
             @game.delete
