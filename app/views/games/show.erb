@@ -2,7 +2,7 @@
 
 
 
-<form method=POST  action=<%="/games/delete"%>>
+<form method=POST  action=<%="/games/#{@game.id}"%>>
     <input type=hidden name=_method value=DELETE>    
     <p><input type="submit" value="Delete The Game?"></p>
 </form>
