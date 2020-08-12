@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.create(params)
       if @user != nil 
         session[:user_id] = @user.id
-        redirect "/games"
+        redirect "/users/#{@user.id}"
       else
         erb :"users/invalid_new"
       end
