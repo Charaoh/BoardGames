@@ -1,5 +1,4 @@
 class UsersController < ApplicationController 
-
   get '/users/login' do
     erb :"users/login"
   end
@@ -31,11 +30,6 @@ class UsersController < ApplicationController
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
     erb :"users/home"
-
-    # @total_games_won = self.games.where(user_id: self.id).size
-    # @total_games_played = self.games.size
-    # @total_games_lost = total_games_played - total_games_won
-    
   end
 
   get '/' do
