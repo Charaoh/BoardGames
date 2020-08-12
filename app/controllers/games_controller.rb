@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
     post '/games' do
         @game = Game.create(user_id: session[:user_id])
-        # another option is: @game = current_user.games.create
+        #@game = current_user.games.create
         redirect "/games/#{@game.id}/play"
     end
 
@@ -49,7 +49,7 @@ class GamesController < ApplicationController
         erb :'games/play'
     end
 
-    patch '/games/:id/play' do
+    patch '/games/:id/play' do #should remove play
         @game = Game.find_by(user_id: session[:user_id], id: params[:id])
         if !@game
            redirect '/games' 
@@ -59,14 +59,11 @@ class GamesController < ApplicationController
         end
     end
 
-    get '/games/:id/delete' do
-        @game = Game.find_by(id: params[:id])
-        erb :'games/delete'        
-    end
-
-    post '/games/:id/delete' do
-        if !Game.find_by(user_id: params[:user_id], id: params[:id])
-            Game.drop(user_id: params[:user_id], id: params[:id])
+    delete '/games/:id' do
+        @game = Game.find_by(user_id: session[:user_id], id: params[:id])
+        if @game
+            @game.delete
+            redirect "/mygames"
         else
             erb :"games/invalid_delete"
         end
