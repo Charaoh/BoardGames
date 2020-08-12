@@ -9,7 +9,7 @@ Specs:
 - [x] Include at least one belongs_to relationship on another model
 - [x] Include user accounts with unique login attribute
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
-- [ ] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
 - [ ] Include user input validations
 - [x] BONUS - not required - Display validation failures to user with error message
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
