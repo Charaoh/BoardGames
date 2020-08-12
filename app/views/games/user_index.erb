@@ -1,12 +1,8 @@
 <h1>List of My Games</h1>
-<ul>
-
-    
+<ul>    
 <% @games.each do |game|%>
 <li><a href="/games/<%= game.id %>"><%= game.id %></a></li>
 <% end %>
-
-
 <ul>
      <nav>
      <p><a href="/games/new">Create New Game</a></p>
