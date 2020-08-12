@@ -1,4 +1,4 @@
-BoardGames
+bBoardGames
 ===
 
 Description
@@ -11,10 +11,10 @@ Installation Instructions
 ---
 
 >Clone [BoardGames](https://github.com/kak79/BoardGames) into it's own folder.  
-Type the following in your terminal or command prompt window:
-bundle install
-shotgun
-Open URL that shotgun says to
+Type the following in your terminal or command prompt window:</br>
+bundle install</br>
+shotgun </br>
+Open URL that shotgun says to </br>
 Explore the web pages.
 
 Contributors Guide
