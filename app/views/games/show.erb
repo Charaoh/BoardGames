@@ -1,0 +1,13 @@
+<p>This is where you choose to go play the game again or delete the game</p>
+
+<form method=POST  action=<%="/games/#{@game.id}"%>>
+    <input type=hidden name=_method value=DELETE>    
+    <p><input type="submit" value="Delete The Game?"></p>
+</form>
+
+     <nav>
+     <p><a href="/mygames">List of My Games</a></p>
+     </nav>
+     <nav>
+     <p><a href="/users/home">Your Dash-Board</a></p>
+     </nav> 
