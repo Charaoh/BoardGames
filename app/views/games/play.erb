@@ -1,5 +1,5 @@
 <p>This is where you play the game</p>
-<form method=POST  action=<%="/games/#{@game.id}/play"%>>
+<form method=POST  action=<%="/games/#{@game.id}"%>>
     <input type=hidden name=_method value=PATCH>
     <p><label for=game_length>Length (in seconds) </label>
     <input id=game_length type="number" name="game_length" value=""></p>
@@ -11,3 +11,9 @@
     </p>
     <p><input type="submit" value="Submit Result"></p>
 </form>
+     <nav>
+     <p><a href="/mygames">List of My Games</a></p>
+     </nav>
+     <nav>
+     <p><a href="/users/home">Your Dash-Board</a></p>
+     </nav> 
