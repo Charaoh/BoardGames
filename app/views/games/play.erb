@@ -1,1 +1,15 @@
 <p>This is where you play the game</p>
+
+
+<form method=POST  action=<%="/games/#{@game.id}/play"%>>
+    <input type=hidden name=_method value=PATCH>
+    <p><label for=game_length>Length (in seconds) </label>
+    <input id=game_length type="number" name="game_length" value=""></p>
+    <p>Did you win?
+    <label for=yes>Yes </label>
+    <input id=yes type="radio" name="won" value="true" >
+    <label for=no>No </label>
+    <input id=no type="radio" name="won" value="false">
+    </p>
+    <p><input type="submit" value="Submit Result"></p>
+</form>
