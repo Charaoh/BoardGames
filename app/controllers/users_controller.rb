@@ -1,5 +1,3 @@
-require './config/environment'
-
 class UsersController < ApplicationController 
 
   get '/users/login' do
@@ -7,10 +5,10 @@ class UsersController < ApplicationController
   end
 
   post '/users/login' do
-    @user = User.find_by(username: params[:username])
-      if @user.authenticate(params[:password])
-        session[:users_id] = @user.id
-        redirect "/users/:id"
+    @user = User.find_by(email: params[:email])
+      if @user && @user.authenticate(params[:password]) 
+        session[:user_id] = @user.id
+        redirect "/users/#{@user.id}"
       else
         erb :"users/invalid_login"
       end
@@ -22,8 +20,8 @@ class UsersController < ApplicationController
 
   post '/users' do
     @user = User.create(params)
-      if @user != nil
-        session[:users_id] = @user.id
+      if @user != nil 
+        session[:user_id] = @user.id
         redirect "/games"
       else
         erb :"users/invalid_new"
