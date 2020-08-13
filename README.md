@@ -1,4 +1,4 @@
-bBoardGames
+BoardGames
 ===
 
 Description
