@@ -28,18 +28,15 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    @user = User.find_by(id: params[:id])
     erb :"users/home"
   end
 
   get '/users/:id/edit' do
-    #binding.pry
-    
     erb :"users/edit"    
   end
 
   patch '/users/:id' do
-
+    #binding.pry
   end
 
   get '/' do
