@@ -32,6 +32,16 @@ class UsersController < ApplicationController
     erb :"users/home"
   end
 
+  get '/users/:id/edit' do
+    #binding.pry
+    
+    erb :"users/edit"    
+  end
+
+  patch '/users/:id' do
+
+  end
+
   get '/' do
     erb :main
   end
