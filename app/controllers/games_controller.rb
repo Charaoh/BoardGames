@@ -1,5 +1,10 @@
 class GamesController < ApplicationController
+    # if !!logged_in?
+    #     redirect "/users/login"
+    # end
+    
     get '/games' do
+
         @games = Game.all
         erb :'games/index'
     end
@@ -30,27 +35,40 @@ class GamesController < ApplicationController
 
     get '/games/:id/play' do
         @game = Game.find_by(id: params[:id])
-        erb :'games/play'
-    end
-
-    patch '/games/:id' do
-        @game = Game.find_by(user_id: session[:user_id], id: params[:id])
-        if !@game
-           redirect '/games' 
+        if @game.user != current_user
+            redirect '/games'
         else
-            @game.update(game_length: params[:game_length], won: params[:won] )
-            redirect "/games"
+            erb :'games/play'
         end
     end
 
-    get '/games/:id/delete' do
+    get '/games/:id/play_again' do
         @game = Game.find_by(id: params[:id])
-        erb :'games/delete'        
+        if @game.user != current_user
+            redirect '/games'
+        else
+            erb :'games/play_again'
+        end
     end
 
+    patch '/games/:id' do
+        @game = Game.find_by(id: params[:id])
+        if @game.user != current_user
+           redirect '/games' 
+        else
+            @game.update(game_length: params[:game_length], won: params[:won] )
+            redirect "/mygames"
+        end
+    end
+
+    # get '/games/:id/delete' do
+    #     @game = Game.find_by(id: params[:id])
+    #     erb :'games/delete'        
+    # end
+
     delete '/games/:id' do
-        @game = Game.find_by(user_id: session[:user_id], id: params[:id])
-        if @game
+        @game = Game.find_by(id: params[:id])
+        if @game.user == current_user
             @game.delete
             redirect "/mygames"
         else
