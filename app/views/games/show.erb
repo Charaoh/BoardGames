@@ -1,3 +1,9 @@
+<p>Do you want to play again?</p>
+<form method=POST  action=<%="/games/#{@game.id}"%>>
+    <input type=hidden name=_method value=PATCH>    
+    <p><input type="submit" value="Play The Game Again?"></p>
+</form>
+
 <p>This is where you go to delete the game</p>
 
 <form method=POST  action=<%="/games/#{@game.id}"%>>
