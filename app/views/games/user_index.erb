@@ -1,14 +1,12 @@
 <h1>List of My Games</h1>
-<ul><p><u>Name,  Game ,  Won = true,  Loss = false </u></p>  
+<table border = "2">     
+<tr><td>Name</td> <td> Game </td> <td> Won = true,  Loss = false </td></tr>
 <% @games.each do |game|%>
-<li><%= game.user.name %>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/games/<%= game.id %>"><%= game.id %></a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<%= game.won %></li><p></p>
+<tr><td><%= game.user.name %></td>
+<td><a href="/games/<%= game.id %>"><%= game.id %></a></td>
+<td><%= game.won %></li></td></tr>
 <% end %>
-
-<ul>
+</table>
      <nav>
      <p><a href="/games/new">Create New Game</a></p>
      </nav>
