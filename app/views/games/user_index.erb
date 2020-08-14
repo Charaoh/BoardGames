@@ -1,8 +1,13 @@
 <h1>List of My Games</h1>
-<ul>    
+<ul><p><u>user id,  game number,  won = true,  loss = false </u></p>  
 <% @games.each do |game|%>
-<li><a href="/games/<%= game.id %>"><%= game.id %></a></li>
+<li><%= game.user_id %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/games/<%= game.id %>"><%= game.id %></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= game.won %></li>
 <% end %>
+
 <ul>
      <nav>
      <p><a href="/games/new">Create New Game</a></p>
