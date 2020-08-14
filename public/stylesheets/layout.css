@@ -1,26 +1,22 @@
 body {
-    background-image: url("/images/pixabay.jpg");
-    background-size: auto;
-    opacity: 0.95;
-    
-    color: white;
+  background-image: url("/images/pixabay.jpg");
+  background-size: auto;
+  opacity: 0.95;
+  color: white;
 }
-/* unvisited link */
+
 a:link {
-    color: lightblue;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: lightgreen;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: pink;
-  }
-  
-  /* selected link */
-  a:active {
-    color: lavender;
-  }
+  color: lightblue;
+}
+
+a:visited {
+  color: lightgreen;
+}
+
+a:hover {
+  color: pink;
+}
+
+a:active {
+  color: lavender;
+}
