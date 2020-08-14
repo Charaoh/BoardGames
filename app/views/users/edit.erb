@@ -1,14 +1,23 @@
-<p>This is where you edit your email</p>
+<% if current_user.errors.any? %>
+<h1>Something Went Wrong: </h1>
+<h3><%=current_user.errors.full_messages.to_sentence%></h3>
+<% end %>
 
-<form method=POST  action=<%=""%>>
+<p>This is where you edit your email</p>
+<p>Do Not Change Anything You Do Not Want Changed</p>
+
+<form method=POST  action=<%="/users/#{current_user.id}"%>>
     <input type=hidden name=_method value=PATCH>
     <p><label for="email">Your E-mail: </label>
-    <input type="text" name="email" value=""></p>
-    <p><input type="submit" value="Submit New Email"></p>
+    <input id="email" type="text" name="email" value=<%=current_user.email%>></p>
+    <p>Leave password blank if you don't want to change it.</p>
+    <p><label for="password">Your Password: </label>
+    <input id="password" type="password" name="password"  ></p>
+    <p><input type="submit" value="Submit Update"></p>
 </form>
 
      <nav>
-     <p><a href="/users/home">Your Dash-Board</a></p>
+     <p><a href=<%="/users/#{current_user.id}"%>>Your Dash-Board</a></p>
      </nav> 
      <nav>
      <p><a href="/logout">Logout</a></p>
