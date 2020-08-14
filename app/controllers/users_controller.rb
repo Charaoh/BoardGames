@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)
-      if @user != nil 
+    @user = User.new(params)
+      if @user.save  
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
       else
@@ -36,7 +36,15 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id' do
-    #binding.pry
+    current_user.email = params[:email]
+    if params[:password] != ""
+      current_user.password = params[:password]
+    end
+    if current_user.save
+      redirect "/users/#{current_user.id}"
+    else
+      erb :"users/edit"
+    end
   end
 
   get '/' do
