@@ -1,25 +1,23 @@
 class GamesController < ApplicationController
-    # if !!logged_in?
-    #     redirect "/users/login"
-    # end
-    
     get '/games' do
-
+        verify
         @games = Game.all
         erb :'games/index'
     end
 
     get '/mygames' do
+    
+        verify
         @games = Game.where(user_id: session[:user_id])
         erb :'games/user_index'
     end
 
-    post '/games/user_index' do
-        @games = Game.find_by(user_id: params[:user_id])
-        
-    end
+    # post '/games/user_index' do
+    #     @games = Game.find_by(user_id: params[:user_id])
+    # end
 
     get '/games/new' do
+        verify
         erb :'games/new'
     end
 
