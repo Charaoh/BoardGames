@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :games
+    has_many :games, dependent: :destroy
     
     has_secure_password
 
