@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password]) 
         session[:user_id] = @user.id
-        redirect "/users/#{@user.id}"
+        redirect "/users/home"
       else
         erb :"users/invalid_login"
       end
@@ -21,30 +21,41 @@ class UsersController < ApplicationController
     @user = User.new(params)
       if @user.save  
         session[:user_id] = @user.id
-        redirect "/users/#{@user.id}"
+        redirect "/users/home"
       else
         erb :"users/invalid_new"
       end
   end
 
-  get '/users/:id' do
+  get '/users/home' do
+    verify
     erb :"users/home"
   end
 
-  get '/users/:id/edit' do
+  get '/users/edit' do
+    verify
     erb :"users/edit"    
   end
 
-  patch '/users/:id' do
+  patch '/users' do
+    verify
     current_user.email = params[:email]
+    current_user.name = params[:name]
     if params[:password] != ""
       current_user.password = params[:password]
     end
     if current_user.save
-      redirect "/users/#{current_user.id}"
+      redirect "/users/home"
     else
       erb :"users/edit"
     end
+  end
+
+  delete '/users' do
+    verify
+    current_user.destroy 
+    logout!
+    redirect '/'
   end
 
   get '/' do
