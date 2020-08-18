@@ -63,11 +63,6 @@ class GamesController < ApplicationController
         end
     end
 
-    # get '/games/:id/delete' do
-    #     @game = Game.find_by(id: params[:id])
-    #     erb :'games/delete'        
-    # end
-
     delete '/games/:id' do
         @game = Game.find_by(id: params[:id])
         if @game.user == current_user
