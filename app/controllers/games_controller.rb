@@ -28,7 +28,11 @@ class GamesController < ApplicationController
 
     get '/games/:id' do
         @game = Game.find_by(id: params[:id])
-        erb :'games/show'
+        if @game == nil
+             erb :'games/invalid_delete'
+        else
+            erb :'games/show'
+        end
     end
 
     get '/games/:id/play' do
