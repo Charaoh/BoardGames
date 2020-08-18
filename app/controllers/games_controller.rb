@@ -12,10 +12,6 @@ class GamesController < ApplicationController
         erb :'games/user_index'
     end
 
-    # post '/games/user_index' do
-    #     @games = Game.find_by(user_id: params[:user_id])
-    # end
-
     get '/games/new' do
         verify
         erb :'games/new'
