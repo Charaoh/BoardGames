@@ -6,9 +6,9 @@ class GamesController < ApplicationController
     end
 
     get '/mygames' do
-    
         verify
-        @games = Game.where(user_id: session[:user_id])
+        @user = current_user
+        @games = @user.games
         erb :'games/user_index'
     end
 
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
     end
 
     get '/games/:id' do
-        @game = Game.find_by(id: params[:id])
+        game
         if @game == nil
              erb :'games/invalid_delete'
         else
@@ -32,7 +32,7 @@ class GamesController < ApplicationController
     end
 
     get '/games/:id/play' do
-        @game = Game.find_by(id: params[:id])
+        game
         if @game.user != current_user
             redirect '/games'
         else
@@ -41,7 +41,7 @@ class GamesController < ApplicationController
     end
 
     get '/games/:id/play_again' do
-        @game = Game.find_by(id: params[:id])
+        game
         if @game.user != current_user
             redirect '/games'
         else
@@ -50,7 +50,7 @@ class GamesController < ApplicationController
     end
 
     patch '/games/:id' do
-        @game = Game.find_by(id: params[:id])
+        game 
         if @game.user != current_user
            redirect '/games' 
         else
@@ -60,7 +60,7 @@ class GamesController < ApplicationController
     end
 
     delete '/games/:id' do
-        @game = Game.find_by(id: params[:id])
+        game
         if @game.user == current_user
             @game.delete
             redirect "/mygames"

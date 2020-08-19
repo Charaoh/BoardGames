@@ -32,5 +32,9 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def game
+      @game = Game.find_by(id: params[:id])
+    end
+
   end
 end
